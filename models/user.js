@@ -4,16 +4,14 @@ var mongoose = require('mongoose')
 mongoose.connect('mongodb://localhost:27017/to-do');
 
 var userSchema = mongoose.Schema({
+    name: String,
     username: String,
-    fullname: String,
     email: String,
     password: String,
-    salt: String
+    secretKey: String
 })
 
-var userModel = mongoose.model('user', userSchema);
+var User = mongoose.model('user', userSchema);
 
 
-module.exports = {
-    userModel
-}
+module.exports = User;
