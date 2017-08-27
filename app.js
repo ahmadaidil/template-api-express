@@ -8,9 +8,9 @@ const express = require('express'),
       cors = require('cors'),
 
       //All Route Files
-      routes = require('./routes/index'),
+      index = require('./routes/index'),
       users = require('./routes/users'),
-      login = require('./routes/login'),
+      auth = require('./routes/auth'),
 
       //Express Instance
       app = express();
@@ -24,8 +24,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(cors());
 
-app.use('/', login);
-app.use('/users', users);
+app.use('/index', index)
+app.use('/api/users', users);
+app.use('/api/auth', auth);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
