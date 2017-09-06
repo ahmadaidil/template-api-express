@@ -1,16 +1,17 @@
 'use strict'
 
-var mongoose = require('mongoose')
+const mongoose = require('mongoose')
+const Schema = mongoose.Schema
 
-var userSchema = mongoose.Schema({
-    name: String,
-    username: String,
-    email: String,
-    password: String,
+let userSchema = Schema({
+    fullname: {type: String, required: true},
+    username: {type: String, unique: true, required: true},
+    email: {type: String, unique:true, required:true},
+    password: {type: String, required:true},
     secretKey: String
 })
 
-var User = mongoose.model('user', userSchema);
+let User = mongoose.model('user', userSchema);
 
 
 module.exports = User;

@@ -1,34 +1,25 @@
 'use strict'
 //All Dependencies
 const express = require('express'),
-      path = require('path'),
-      logger = require('morgan'),
-      cookieParser = require('cookie-parser'),
       bodyParser = require('body-parser'),
       cors = require('cors'),
       mongoose = require('mongoose'),
-
       //All Route Files
       index = require('./routes/index'),
-      users = require('./routes/users'),
       auth = require('./routes/auth'),
-
       //Express Instance
       app = express();
 
 //load environment variables with dotenv
 require('dotenv').config()
 
-app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cookieParser());
 app.use(cors());
 
-mongoose.connect('mongodb://localhost:27017/dbname');
+mongoose.connect('');
 
 app.use('/index', index)
-app.use('/api/users', users);
 app.use('/api/auth', auth);
 
 // catch 404 and forward to error handler
